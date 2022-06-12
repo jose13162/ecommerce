@@ -1,5 +1,9 @@
+import cookies from "react-cookies";
+
 function App() {
-  return <h1>Hello, world!</h1>;
+  const token = cookies.load("token");
+
+  return <p style={{ wordWrap: "break-word" }}>{token ? token : "no token"}</p>;
 }
 
 export default App;

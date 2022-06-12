@@ -12,6 +12,7 @@ const StyledButton = styled("button", {
   background: theme.colors.$primary.value,
   color: theme.colors.$textColor.value,
   fontWeight: 400,
+  cursor: "pointer",
 });
 
 export function Button({ text, ...rest }: IProps) {

@@ -33,6 +33,7 @@ export const darkTheme = createTheme("dark-theme", {
     $bgColorSecondary: "#404852",
     $bgColorSecondaryDarker: "#425054",
     $textColor: "#bbb",
+    $titleColor: "#ccc",
   },
 });
 
@@ -44,5 +45,6 @@ export const lightTheme = createTheme("light-theme", {
     $bgColorSecondary: "#e9f5ff",
     $bgColorSecondaryDarker: "#e7f3fd",
     $textColor: "#555",
+    $titleColor: "#444",
   },
 });

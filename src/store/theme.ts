@@ -13,7 +13,7 @@ export const themeStore = createStore<ThemeState>((set) => {
   localStorage.setItem("theme", initialTheme)
 
   return {
-    theme: (localStorage.getItem("theme") as Theme) || "light-theme",
+    theme: initialTheme,
     toggleTheme: () => {
       set((state: ThemeState) => {
         const newTheme = state.theme === "light-theme" ? "dark-theme" : "light-theme";

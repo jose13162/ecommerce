@@ -2,9 +2,11 @@ import React from "react";
 import { styled } from "../stitches.config";
 
 const StyledContainer = styled("div", {
-  height: "100vh",
   width: "70%",
+  height: "100vh",
   margin: "auto",
+  overflow: "hidden",
+  display: "grid",
   "@tiny": {
     width: "100vw",
   },
