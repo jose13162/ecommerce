@@ -1,9 +1,14 @@
-import cookies from "react-cookies";
+import { useStore } from "zustand";
+import { profileStore } from "./store/profile";
 
 function App() {
-  const token = cookies.load("token");
+  const { user } = useStore(profileStore);
 
-  return <p style={{ wordWrap: "break-word" }}>{token ? token : "no token"}</p>;
+  return (
+    <pre>
+      <code>{JSON.stringify(user, null, 2)}</code>
+    </pre>
+  );
 }
 
 export default App;

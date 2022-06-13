@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
+import { RequireAuth } from "./Middleware/RequireAuth";
 import { Login } from "./Pages/Login";
 import { globalCss } from "./stitches.config";
 
@@ -15,7 +16,15 @@ function AppRoutes() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/redirect" element={<RequireAuth />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <App />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>

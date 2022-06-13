@@ -6,10 +6,10 @@ import { Input } from "../Components/Input";
 import { darkTheme, lightTheme, styled, theme } from "../stitches.config";
 import { themeStore } from "../store/theme";
 import { $axios } from "../utils/axios";
-import cookies from "react-cookies";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { tokenStore } from "../store/token";
 
 interface IForm {
   email: string;
@@ -74,6 +74,7 @@ const Fields = styled("div", {
 
 export function Login() {
   const { theme } = useStore(themeStore);
+  const { setToken } = useStore(tokenStore);
   const [form, setForm] = useState<IForm>({
     email: "",
     password: "",
@@ -100,11 +101,7 @@ export function Login() {
     try {
       const { data } = await $axios.post("/auth", form);
 
-      if (data.token) {
-        cookies.save("token", data.token, {
-          maxAge: 30 * 24 * 60 * 60,
-        });
-      }
+      data.token && setToken(data.token);
 
       navigate("/");
     } catch (error: any) {
