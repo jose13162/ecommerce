@@ -3,76 +3,22 @@ import { useStore } from "zustand";
 import { Button } from "../Components/Button";
 import { Container } from "../Components/Container";
 import { Input } from "../Components/Input";
-import { darkTheme, lightTheme, styled, theme } from "../stitches.config";
 import { themeStore } from "../store/theme";
 import { $axios } from "../utils/axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { tokenStore } from "../store/token";
+import { FormGrid } from "../Components/FormGrid";
+import { FormUtils } from "../Components/FormUtils";
 
 interface IForm {
   email: string;
   password: string;
 }
 
-const StyledLogin = styled("div", {
-  "&.light-theme": {
-    background: lightTheme.colors.$bgColor.value,
-  },
-  "&.dark-theme": {
-    background: darkTheme.colors.$bgColorDarkest.value,
-  },
-});
-
-const Wrapper = styled("div", {
-  width: "70%",
-  minWidth: "16rem",
-  maxWidth: "28rem",
-  borderRadius: "1rem",
-  padding: "2rem",
-  margin: "1rem",
-  display: "grid",
-  gap: "2rem",
-  placeItems: "center",
-  placeSelf: "center",
-  "&.light-theme": {
-    boxShadow: theme.shadows.$bold.value,
-    background: lightTheme.colors.$bgColorDarker.value,
-    h1: {
-      color: lightTheme.colors.$titleColor.value,
-    },
-  },
-  "&.dark-theme": {
-    boxShadow: theme.shadows.$bolder.value,
-    background: darkTheme.colors.$bgColor.value,
-    h1: {
-      color: darkTheme.colors.$titleColor.value,
-    },
-  },
-  h1: {
-    margin: 0,
-  },
-});
-
-const Form = styled("form", {
-  width: "100%",
-  display: "grid",
-  gridTemplateColumns: "1fr",
-  gridTemplateRows: "max-content max-content",
-  gap: "3rem",
-  justifyItems: "center",
-});
-
-const Fields = styled("div", {
-  display: "grid",
-  width: "100%",
-  gridTemplateColumns: "1fr",
-  gridAutoRows: "max-content",
-  gap: "0.5rem",
-});
-
 export function Login() {
+  const navigate = useNavigate();
   const { theme } = useStore(themeStore);
   const { setToken } = useStore(tokenStore);
   const [form, setForm] = useState<IForm>({
@@ -80,7 +26,6 @@ export function Login() {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
   function handleChange({ currentTarget }: FormEvent<HTMLInputElement>) {
     const value =
@@ -96,6 +41,9 @@ export function Login() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (isLoading) return;
+
     setIsLoading(true);
 
     try {
@@ -128,7 +76,7 @@ export function Login() {
   }
 
   return (
-    <StyledLogin className={theme}>
+    <FormUtils.Container>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -140,34 +88,43 @@ export function Login() {
         pauseOnHover
       />
       <Container>
-        <Wrapper className={theme}>
+        <FormUtils.Wrapper>
           <h1>Entre na sua conta</h1>
-          <Form className={theme} onSubmit={handleSubmit} autoComplete="off">
-            <Fields>
+          <FormGrid
+            className={theme}
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
+            <FormUtils.FieldsGrid>
               <Input
                 type="email"
                 name="email"
                 placeholder="Email"
                 onChange={handleChange}
+                disabled={isLoading}
                 value={form.email}
+                required
               />
               <Input
                 type="password"
                 name="password"
                 placeholder="Senha"
                 onChange={handleChange}
+                disabled={isLoading}
                 value={form.password}
+                required
               />
-            </Fields>
+            </FormUtils.FieldsGrid>
 
             <Button
               type="submit"
               style={{ width: "100%" }}
               text={isLoading ? "Enviando..." : "Entrar"}
+              disabled={isLoading}
             />
-          </Form>
-        </Wrapper>
+          </FormGrid>
+        </FormUtils.Wrapper>
       </Container>
-    </StyledLogin>
+    </FormUtils.Container>
   );
 }

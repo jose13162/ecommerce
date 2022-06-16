@@ -13,6 +13,11 @@ const StyledButton = styled("button", {
   color: theme.colors.$textColor.value,
   fontWeight: 400,
   cursor: "pointer",
+  transition: theme.transitions.$baseTransition.value,
+  "&[disabled]": {
+    cursor: "inherit",
+    background: theme.colors.$primaryLighter.value,
+  },
 });
 
 export function Button({ text, ...rest }: IProps) {

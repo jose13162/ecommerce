@@ -18,12 +18,19 @@ const StyledInput = styled("input", {
     background: lightTheme.colors.$bgColor.value,
     caretColor: lightTheme.colors.$textColor.value,
     color: lightTheme.colors.$textColor.value,
+    "&[disabled]": {
+      border: `2px solid ${lightTheme.colors.$bgColorDarkest.value}`,
+      background: lightTheme.colors.$bgColorDarkest.value,
+    },
   },
   "&.dark-theme": {
-    border: `2px solid ${darkTheme.colors.$bgColor.value}`,
-    background: darkTheme.colors.$bgColorDarkest.value,
+    border: `2px solid ${darkTheme.colors.$bgColorLighter.value}`,
+    background: darkTheme.colors.$bgColorLighter.value,
     caretColor: darkTheme.colors.$textColor.value,
     color: darkTheme.colors.$textColor.value,
+    "&[disabled]": {
+      opacity: 0.8,
+    },
   },
   "&:focus": {
     border: `2px solid ${theme.colors.$primary.value}`,

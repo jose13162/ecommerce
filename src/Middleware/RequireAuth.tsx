@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cookies from "react-cookies";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "zustand";
@@ -14,18 +14,20 @@ export function RequireAuth({ children }: IProps) {
   const { setUser } = useStore(profileStore);
   const navigate = useNavigate();
 
-  $axios
-    .get("/users", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(({ data }) => {
-      setUser(data);
-    })
-    .catch(() => {
-      navigate("/login");
-    });
+  useEffect(() => {
+    $axios
+      .get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(({ data }) => {
+        setUser(data);
+      })
+      .catch(() => {
+        navigate("/login");
+      });
+  }, []);
 
   return <>{children}</>;
 }
