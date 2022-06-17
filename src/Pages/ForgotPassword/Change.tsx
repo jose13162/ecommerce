@@ -1,30 +1,27 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import { useStore } from "zustand";
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
 import { FormUtils } from "../../Components/FormUtils";
 import { Input } from "../../Components/Input";
-import { IKey } from "../../Models/Key";
-import { themeStore } from "../../store/theme";
 import { $axios } from "../../utils/axios";
+import { IKey } from "../../Models/Key";
+import { useForm } from "../../utils/useForm";
+import { toast, ToastContainer } from "react-toastify";
+import { useStore } from "zustand";
+import { themeStore } from "../../store/theme";
 
 interface IForm {
-  name: string;
-  username: string;
   password: string;
   passwordConfirmation: string;
 }
 
-export function FinishRegister() {
-  const navigate = useNavigate();
+export function ChangePassword() {
   const { key } = useParams();
   const { theme } = useStore(themeStore);
-  const [registerKey, setRegisterKey] = useState<IKey>();
-  const [form, setForm] = useState<IForm>({
-    name: "",
-    username: "",
+  const navigate = useNavigate();
+  const [forgotPasswordKey, setForgotPasswordKey] = useState<IKey>();
+  const [form, setForm, handleChange] = useForm<IForm>({
     password: "",
     passwordConfirmation: "",
   });
@@ -32,56 +29,68 @@ export function FinishRegister() {
 
   useEffect(() => {
     $axios
-      .get(`/register/${key}`)
+      .get(`/forgot-password/${key}`)
       .then(({ data }) => {
-        setRegisterKey(data);
+        setForgotPasswordKey(data);
       })
       .catch(() => {
-        navigate("/register");
+        navigate("/forgot-password");
       });
   }, []);
-
-  function handleChange({ currentTarget }: FormEvent<HTMLInputElement>) {
-    const value =
-      currentTarget.type === "checkbox"
-        ? currentTarget.checked
-        : currentTarget.value;
-
-    setForm({
-      ...form,
-      [currentTarget.name]: value,
-    });
-  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (isLoading) return;
-    if (!registerKey) return;
 
     setIsLoading(true);
 
-    try {
-      await $axios.put("/register", {
+    if (form.password !== form.passwordConfirmation) {
+      toast.error("Confirme sua senha novamente...", {
+        theme: theme === "dark-theme" ? "dark" : "light",
+      });
+      setForm({
         ...form,
-        key: registerKey.key,
+        passwordConfirmation: "",
+      });
+
+      setIsLoading(false);
+
+      return;
+    }
+
+    try {
+      await $axios.put("/forgot-password", {
+        ...form,
+        key: forgotPasswordKey!.key,
       });
 
       navigate("/login");
     } catch (error: any) {
       switch (error.response.status) {
         case 404:
-          navigate("/register");
-          break;
+          navigate("/forgot-password");
 
+          break;
         case 422:
-          toast.error("Esse nome de usuário já está em uso", {
+          toast.error("Confirme sua senha novamente...", {
             theme: theme === "dark-theme" ? "dark" : "light",
           });
           setForm({
             ...form,
-            username: "",
+            passwordConfirmation: "",
           });
+
+          break;
+        case 400:
+          toast.error("Sua nova senha deve ser diferente da anterior...", {
+            theme: theme === "dark-theme" ? "dark" : "light",
+          });
+          setForm({
+            password: "",
+            passwordConfirmation: "",
+          });
+
           break;
       }
     }
@@ -102,58 +111,36 @@ export function FinishRegister() {
         pauseOnHover
       />
       <Container>
-        <FormUtils.Wrapper className={theme}>
-          <h1>Crie uma conta</h1>
-          <FormUtils.Grid
-            className={theme}
-            onSubmit={handleSubmit}
-            autoComplete="off"
-          >
+        <FormUtils.Wrapper>
+          <h1>Mudar senha</h1>
+          <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">
             <FormUtils.FieldsGrid>
-              <Input type="text" value={registerKey?.email || ""} disabled />
+              <Input value={forgotPasswordKey?.email || ""} disabled />
               <Input
-                type="text"
-                name="name"
-                placeholder="Nome"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.name}
-                required
-              />
-              <Input
-                type="text"
-                name="username"
-                placeholder="Nome de usuário"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.username}
-                required
-              />
-              <Input
-                type="password"
+                placeholder="Nova senha"
                 name="password"
-                placeholder="Senha"
+                type="password"
                 onChange={handleChange}
-                disabled={isLoading}
                 value={form.password}
+                disabled={isLoading}
                 required
               />
               <Input
-                type="password"
+                placeholder="Confirme a senha"
                 name="passwordConfirmation"
-                placeholder="Confirme sua senha"
+                type="password"
                 onChange={handleChange}
-                disabled={isLoading}
                 value={form.passwordConfirmation}
+                disabled={isLoading}
                 required
               />
             </FormUtils.FieldsGrid>
 
             <Button
               type="submit"
-              style={{ width: "100%" }}
+              text={isLoading ? "Enviando..." : "Enviar"}
               disabled={isLoading}
-              text={isLoading ? "Enviando..." : "Criar conta"}
+              style={{ width: "100%" }}
             />
           </FormUtils.Grid>
         </FormUtils.Wrapper>

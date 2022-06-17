@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
 import { RequireAuth } from "./Middleware/RequireAuth";
+import { ForgotPassword } from "./Pages/ForgotPassword";
+import { ChangePassword } from "./Pages/ForgotPassword/Change";
 import { Login } from "./Pages/Login";
 import { Register } from "./Pages/Register";
-import { FinishRegister } from "./Pages/Register/Finish";
+import { CreateAccount } from "./Pages/Register/CreateAccount";
 import { globalCss } from "./stitches.config";
 
 const globalStyles = globalCss({
@@ -29,7 +31,9 @@ function AppRoutes() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register/:key" element={<FinishRegister />} />
+        <Route path="/register/:key" element={<CreateAccount />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/forgot-password/:key" element={<ChangePassword />} />
       </Routes>
     </Router>
   );

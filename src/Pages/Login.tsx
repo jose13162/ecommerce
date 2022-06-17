@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { tokenStore } from "../store/token";
 import { FormGrid } from "../Components/FormGrid";
 import { FormUtils } from "../Components/FormUtils";
+import { useForm } from "../utils/useForm";
 
 interface IForm {
   email: string;
@@ -21,23 +22,11 @@ export function Login() {
   const navigate = useNavigate();
   const { theme } = useStore(themeStore);
   const { setToken } = useStore(tokenStore);
-  const [form, setForm] = useState<IForm>({
+  const [form, setForm, handleChange] = useForm<IForm>({
     email: "",
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-
-  function handleChange({ currentTarget }: FormEvent<HTMLInputElement>) {
-    const value =
-      currentTarget.type === "checkbox"
-        ? currentTarget.checked
-        : currentTarget.value;
-
-    setForm({
-      ...form,
-      [currentTarget.name]: value,
-    });
-  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -91,7 +80,6 @@ export function Login() {
         <FormUtils.Wrapper>
           <h1>Entre na sua conta</h1>
           <FormGrid
-            className={theme}
             onSubmit={handleSubmit}
             autoComplete="off"
           >

@@ -1,24 +1,21 @@
 import { FormEvent, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { useStore } from "zustand";
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
+import { FormUtils } from "../../Components/FormUtils";
 import { Input } from "../../Components/Input";
 import { themeStore } from "../../store/theme";
 import { $axios } from "../../utils/axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { FormUtils } from "../../Components/FormUtils";
 import { useForm } from "../../utils/useForm";
 
 interface IForm {
   email: string;
 }
 
-export function Register() {
+export function ForgotPassword() {
   const { theme } = useStore(themeStore);
-  const [form, setForm, handleChange] = useForm<IForm>({
-    email: "",
-  });
+  const [form, setForm, handleChange] = useForm<IForm>({ email: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
@@ -30,28 +27,30 @@ export function Register() {
     setIsLoading(true);
 
     try {
-      await $axios.post("/register", {
-        email: form.email,
+      await $axios.post("/forgot-password", {
+        ...form,
         redirectUrl: "http://localhost:3000/",
       });
 
-      setIsDone(true);
       toast.success("Email enviado!", {
         theme: theme === "dark-theme" ? "dark" : "light",
       });
+
+      setForm({
+        email: "",
+      });
+      setIsDone(true);
     } catch (error: any) {
-      switch (error.response.status) {
-        case 400:
-          toast.error("Este email está em uso", {
-            theme: theme === "dark-theme" ? "dark" : "light",
-          });
-          break;
+      if (error.response.status === 404) {
+        toast.error("Esse email não existe", {
+          theme: theme === "dark-theme" ? "dark" : "light",
+        });
+        setForm({
+          email: "",
+        });
       }
     }
 
-    setForm({
-      email: "",
-    });
     setIsLoading(false);
   }
 
@@ -68,27 +67,25 @@ export function Register() {
         pauseOnHover
       />
       <Container>
-        <FormUtils.Wrapper className={theme}>
-          <h1>Crie uma conta</h1>
-          <FormUtils.Grid
-            onSubmit={handleSubmit}
-            autoComplete="off"
-          >
+        <FormUtils.Wrapper>
+          <h1>Recuperar senha</h1>
+
+          <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">
             <Input
               type="email"
               name="email"
               placeholder="Email"
               onChange={handleChange}
-              disabled={isLoading || isDone}
               value={form.email}
+              disabled={isLoading || isDone}
               required
             />
 
             <Button
               type="submit"
-              style={{ width: "100%" }}
+              text={isLoading ? "Enviando..." : isDone ? "Enviado" : "Enviar"}
               disabled={isLoading || isDone}
-              text={isDone ? "Enviado" : isLoading ? "Enviando..." : "Enviar"}
+              style={{ width: "100%" }}
             />
           </FormUtils.Grid>
         </FormUtils.Wrapper>
