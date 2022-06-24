@@ -66,7 +66,7 @@ export function ForgotPassword() {
         draggable
         pauseOnHover
       />
-      <Container>
+      <Container fullHeight>
         <FormUtils.Wrapper>
           <h1>Recuperar senha</h1>
 

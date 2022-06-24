@@ -110,7 +110,7 @@ export function ChangePassword() {
         draggable
         pauseOnHover
       />
-      <Container>
+      <Container fullHeight>
         <FormUtils.Wrapper>
           <h1>Mudar senha</h1>
           <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">

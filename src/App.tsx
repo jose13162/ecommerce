@@ -1,13 +1,26 @@
 import { useStore } from "zustand";
-import { profileStore } from "./store/profile";
+import { Navigation } from "./Components/Navigation";
+import { darkTheme, lightTheme, styled } from "./stitches.config";
+import { themeStore } from "./store/theme";
+
+const StyledApp = styled("div", {
+  width: "100vw",
+  height: "100vh",
+  "&.light-theme": {
+    background: lightTheme.colors.$bgColor.value,
+  },
+  "&.dark-theme": {
+    background: darkTheme.colors.$bgColorLighter.value,
+  },
+});
 
 function App() {
-  const { user } = useStore(profileStore);
+  const { theme } = useStore(themeStore);
 
   return (
-    <pre>
-      <code>{JSON.stringify(user, null, 2)}</code>
-    </pre>
+    <StyledApp className={theme}>
+      <Navigation />
+    </StyledApp>
   );
 }
 

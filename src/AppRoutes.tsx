@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
+import { Navigation } from "./Components/Navigation";
 import { RequireAuth } from "./Middleware/RequireAuth";
 import { ForgotPassword } from "./Pages/ForgotPassword";
 import { ChangePassword } from "./Pages/ForgotPassword/Change";
@@ -11,6 +12,10 @@ import { globalCss } from "./stitches.config";
 const globalStyles = globalCss({
   "*": {
     fontFamily: "Poppins",
+  },
+  ul: {
+    margin: 0,
+    padding: 0,
   },
 });
 

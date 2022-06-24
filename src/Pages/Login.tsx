@@ -76,7 +76,7 @@ export function Login() {
         draggable
         pauseOnHover
       />
-      <Container>
+      <Container fullHeight>
         <FormUtils.Wrapper>
           <h1>Entre na sua conta</h1>
           <FormGrid

@@ -67,7 +67,7 @@ export function Register() {
         draggable
         pauseOnHover
       />
-      <Container>
+      <Container fullHeight>
         <FormUtils.Wrapper className={theme}>
           <h1>Crie uma conta</h1>
           <FormUtils.Grid

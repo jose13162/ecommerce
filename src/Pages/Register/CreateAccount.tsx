@@ -115,7 +115,7 @@ export function CreateAccount() {
         draggable
         pauseOnHover
       />
-      <Container>
+      <Container fullHeight>
         <FormUtils.Wrapper className={theme}>
           <h1>Crie uma conta</h1>
           <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">
