@@ -65,7 +65,7 @@ export function Login() {
   }
 
   return (
-    <FormUtils.Container>
+    <FormUtils.ScreenContainer>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -79,40 +79,39 @@ export function Login() {
       <Container fullHeight>
         <FormUtils.Wrapper>
           <h1>Entre na sua conta</h1>
-          <FormGrid
-            onSubmit={handleSubmit}
-            autoComplete="off"
-          >
-            <FormUtils.FieldsGrid>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.email}
-                required
-              />
-              <Input
-                type="password"
-                name="password"
-                placeholder="Senha"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.password}
-                required
-              />
-            </FormUtils.FieldsGrid>
+          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+            <FormUtils.Grid>
+              <FormUtils.FieldsGrid>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  value={form.email}
+                  required
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Senha"
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  value={form.password}
+                  required
+                />
+              </FormUtils.FieldsGrid>
 
-            <Button
-              type="submit"
-              style={{ width: "100%" }}
-              text={isLoading ? "Enviando..." : "Entrar"}
-              disabled={isLoading}
-            />
-          </FormGrid>
+              <Button
+                type="submit"
+                style={{ width: "100%" }}
+                text={isLoading ? "Enviando..." : "Entrar"}
+                disabled={isLoading}
+              />
+            </FormUtils.Grid>
+          </FormUtils.Form>
         </FormUtils.Wrapper>
       </Container>
-    </FormUtils.Container>
+    </FormUtils.ScreenContainer>
   );
 }

@@ -56,7 +56,7 @@ export function Register() {
   }
 
   return (
-    <FormUtils.Container>
+    <FormUtils.ScreenContainer>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -70,29 +70,28 @@ export function Register() {
       <Container fullHeight>
         <FormUtils.Wrapper className={theme}>
           <h1>Crie uma conta</h1>
-          <FormUtils.Grid
-            onSubmit={handleSubmit}
-            autoComplete="off"
-          >
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onChange={handleChange}
-              disabled={isLoading || isDone}
-              value={form.email}
-              required
-            />
+          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+            <FormUtils.Grid>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                disabled={isLoading || isDone}
+                value={form.email}
+                required
+              />
 
-            <Button
-              type="submit"
-              style={{ width: "100%" }}
-              disabled={isLoading || isDone}
-              text={isDone ? "Enviado" : isLoading ? "Enviando..." : "Enviar"}
-            />
-          </FormUtils.Grid>
+              <Button
+                type="submit"
+                style={{ width: "100%" }}
+                disabled={isLoading || isDone}
+                text={isDone ? "Enviado" : isLoading ? "Enviando..." : "Enviar"}
+              />
+            </FormUtils.Grid>
+          </FormUtils.Form>
         </FormUtils.Wrapper>
       </Container>
-    </FormUtils.Container>
+    </FormUtils.ScreenContainer>
   );
 }

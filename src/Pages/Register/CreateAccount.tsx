@@ -104,7 +104,7 @@ export function CreateAccount() {
   }
 
   return (
-    <FormUtils.Container>
+    <FormUtils.ScreenContainer>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -118,56 +118,58 @@ export function CreateAccount() {
       <Container fullHeight>
         <FormUtils.Wrapper className={theme}>
           <h1>Crie uma conta</h1>
-          <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">
-            <FormUtils.FieldsGrid>
-              <Input type="text" value={registerKey?.email || ""} disabled />
-              <Input
-                type="text"
-                name="name"
-                placeholder="Nome"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.name}
-                required
-              />
-              <Input
-                type="text"
-                name="username"
-                placeholder="Nome de usuário"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.username}
-                required
-              />
-              <Input
-                type="password"
-                name="password"
-                placeholder="Senha"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.password}
-                required
-              />
-              <Input
-                type="password"
-                name="passwordConfirmation"
-                placeholder="Confirme sua senha"
-                onChange={handleChange}
-                disabled={isLoading}
-                value={form.passwordConfirmation}
-                required
-              />
-            </FormUtils.FieldsGrid>
+          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+            <FormUtils.Grid>
+              <FormUtils.FieldsGrid>
+                <Input type="text" value={registerKey?.email || ""} disabled />
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Nome"
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  value={form.name}
+                  required
+                />
+                <Input
+                  type="text"
+                  name="username"
+                  placeholder="Nome de usuário"
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  value={form.username}
+                  required
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Senha"
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  value={form.password}
+                  required
+                />
+                <Input
+                  type="password"
+                  name="passwordConfirmation"
+                  placeholder="Confirme sua senha"
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  value={form.passwordConfirmation}
+                  required
+                />
+              </FormUtils.FieldsGrid>
 
-            <Button
-              type="submit"
-              style={{ width: "100%" }}
-              disabled={isLoading}
-              text={isLoading ? "Enviando..." : "Criar conta"}
-            />
-          </FormUtils.Grid>
+              <Button
+                type="submit"
+                style={{ width: "100%" }}
+                disabled={isLoading}
+                text={isLoading ? "Enviando..." : "Criar conta"}
+              />
+            </FormUtils.Grid>
+          </FormUtils.Form>
         </FormUtils.Wrapper>
       </Container>
-    </FormUtils.Container>
+    </FormUtils.ScreenContainer>
   );
 }

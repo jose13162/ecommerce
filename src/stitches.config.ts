@@ -19,10 +19,10 @@ export const { styled, globalCss, theme, createTheme } = createStitches({
   },
   media: {
     tiny: "(max-width: 480px)",
-    small: "(min-width: 481px) and (max-width: 768px)",
-    medium: "(min-width: 769px) and (max-width: 1024px)",
-    large: "(min-width: 1025px) and (max-width: 1200px)",
-    infinite: "(min-width: 1201px)",
+    small: "(max-width: 768px)",
+    medium: "(max-width: 1024px)",
+    large: "(max-width: 1200px)",
+    infinite: "(mix-width: 1201px)",
   },
 });
 

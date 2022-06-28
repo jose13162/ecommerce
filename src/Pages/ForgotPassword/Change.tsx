@@ -99,7 +99,7 @@ export function ChangePassword() {
   }
 
   return (
-    <FormUtils.Container>
+    <FormUtils.ScreenContainer>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -113,38 +113,40 @@ export function ChangePassword() {
       <Container fullHeight>
         <FormUtils.Wrapper>
           <h1>Mudar senha</h1>
-          <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">
-            <FormUtils.FieldsGrid>
-              <Input value={forgotPasswordKey?.email || ""} disabled />
-              <Input
-                placeholder="Nova senha"
-                name="password"
-                type="password"
-                onChange={handleChange}
-                value={form.password}
-                disabled={isLoading}
-                required
-              />
-              <Input
-                placeholder="Confirme a senha"
-                name="passwordConfirmation"
-                type="password"
-                onChange={handleChange}
-                value={form.passwordConfirmation}
-                disabled={isLoading}
-                required
-              />
-            </FormUtils.FieldsGrid>
+          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+            <FormUtils.Grid>
+              <FormUtils.FieldsGrid>
+                <Input value={forgotPasswordKey?.email || ""} disabled />
+                <Input
+                  placeholder="Nova senha"
+                  name="password"
+                  type="password"
+                  onChange={handleChange}
+                  value={form.password}
+                  disabled={isLoading}
+                  required
+                />
+                <Input
+                  placeholder="Confirme a senha"
+                  name="passwordConfirmation"
+                  type="password"
+                  onChange={handleChange}
+                  value={form.passwordConfirmation}
+                  disabled={isLoading}
+                  required
+                />
+              </FormUtils.FieldsGrid>
 
-            <Button
-              type="submit"
-              text={isLoading ? "Enviando..." : "Enviar"}
-              disabled={isLoading}
-              style={{ width: "100%" }}
-            />
-          </FormUtils.Grid>
+              <Button
+                type="submit"
+                text={isLoading ? "Enviando..." : "Enviar"}
+                disabled={isLoading}
+                style={{ width: "100%" }}
+              />
+            </FormUtils.Grid>
+          </FormUtils.Form>
         </FormUtils.Wrapper>
       </Container>
-    </FormUtils.Container>
+    </FormUtils.ScreenContainer>
   );
 }

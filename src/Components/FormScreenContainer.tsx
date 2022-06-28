@@ -7,7 +7,7 @@ interface IProps extends BaseHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const StyledFormContainer = styled("div", {
+const StyledFormScreenContainer = styled("div", {
   "&.light-theme": {
     background: lightTheme.colors.$bgColor.value,
   },
@@ -16,12 +16,12 @@ const StyledFormContainer = styled("div", {
   },
 });
 
-export function FormContainer({ children, ...rest }: IProps) {
+export function FormScreenContainer({ children, ...rest }: IProps) {
   const { theme } = useStore(themeStore);
 
   return (
-    <StyledFormContainer {...rest} className={theme}>
+    <StyledFormScreenContainer {...rest} className={theme}>
       {children}
-    </StyledFormContainer>
+    </StyledFormScreenContainer>
   );
 }

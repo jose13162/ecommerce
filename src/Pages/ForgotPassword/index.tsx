@@ -55,7 +55,7 @@ export function ForgotPassword() {
   }
 
   return (
-    <FormUtils.Container>
+    <FormUtils.ScreenContainer>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -69,27 +69,28 @@ export function ForgotPassword() {
       <Container fullHeight>
         <FormUtils.Wrapper>
           <h1>Recuperar senha</h1>
+          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+            <FormUtils.Grid>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                value={form.email}
+                disabled={isLoading || isDone}
+                required
+              />
 
-          <FormUtils.Grid onSubmit={handleSubmit} autoComplete="off">
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onChange={handleChange}
-              value={form.email}
-              disabled={isLoading || isDone}
-              required
-            />
-
-            <Button
-              type="submit"
-              text={isLoading ? "Enviando..." : isDone ? "Enviado" : "Enviar"}
-              disabled={isLoading || isDone}
-              style={{ width: "100%" }}
-            />
-          </FormUtils.Grid>
+              <Button
+                type="submit"
+                text={isLoading ? "Enviando..." : isDone ? "Enviado" : "Enviar"}
+                disabled={isLoading || isDone}
+                style={{ width: "100%" }}
+              />
+            </FormUtils.Grid>
+          </FormUtils.Form>
         </FormUtils.Wrapper>
       </Container>
-    </FormUtils.Container>
+    </FormUtils.ScreenContainer>
   );
 }
