@@ -9,9 +9,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { tokenStore } from "../store/token";
-import { FormGrid } from "../Components/FormGrid";
-import { FormUtils } from "../Components/FormUtils";
-import { useForm } from "../utils/useForm";
+import * as FormUtils from "../Components/FormUtils";
+import { useForm } from "../hooks/useForm";
 
 interface IForm {
   email: string;
@@ -77,9 +76,9 @@ export function Login() {
         pauseOnHover
       />
       <Container fullHeight>
-        <FormUtils.Wrapper>
+        <FormUtils.Container>
           <h1>Entre na sua conta</h1>
-          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+          <FormUtils.Base onSubmit={handleSubmit} autoComplete="off">
             <FormUtils.Grid>
               <FormUtils.FieldsGrid>
                 <Input
@@ -100,6 +99,19 @@ export function Login() {
                   value={form.password}
                   required
                 />
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "max-content max-content",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <FormUtils.Link
+                    href="/forgot-password"
+                    text="Esqueceu a senha?"
+                  />
+                  <FormUtils.Link href="/register" text="Não tem uma conta?" />
+                </div>
               </FormUtils.FieldsGrid>
 
               <Button
@@ -109,8 +121,8 @@ export function Login() {
                 disabled={isLoading}
               />
             </FormUtils.Grid>
-          </FormUtils.Form>
-        </FormUtils.Wrapper>
+          </FormUtils.Base>
+        </FormUtils.Container>
       </Container>
     </FormUtils.ScreenContainer>
   );

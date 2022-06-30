@@ -12,9 +12,9 @@ export const { styled, globalCss, theme, createTheme } = createStitches({
       $fastTransition: "all 0.10s linear",
     },
     shadows: {
-      $base: "0 2px 5px rgba(0, 0, 0, 0.1)",
-      $bold: "0 2px 5px rgba(0, 0, 0, 0.3)",
-      $bolder: "0 2px 5px rgba(0, 0, 0, 0.5)",
+      $base: "0 1px 5px rgba(0, 0, 0, 0.1)",
+      $bold: "0 1px 5px rgba(0, 0, 0, 0.3)",
+      $bolder: "0 1px 5px rgba(0, 0, 0, 0.5)",
     },
   },
   media: {
@@ -34,6 +34,7 @@ export const darkTheme = createTheme("dark-theme", {
     $bgColorSecondary: "#404852",
     $bgColorSecondaryDarker: "#425054",
     $textColor: "#bbb",
+    $textColorDarker: "#888",
     $titleColor: "#ccc",
   },
 });
@@ -46,6 +47,7 @@ export const lightTheme = createTheme("light-theme", {
     $bgColorSecondary: "#e9f5ff",
     $bgColorSecondaryDarker: "#e7f3fd",
     $textColor: "#555",
+    $textColorDarker: "#333",
     $titleColor: "#444",
   },
 });

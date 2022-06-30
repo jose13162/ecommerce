@@ -1,13 +1,13 @@
 import { BaseHTMLAttributes } from "react";
 import { useStore } from "zustand";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
-import { themeStore } from "../store/theme";
+import { darkTheme, lightTheme, styled } from "../../stitches.config";
+import { themeStore } from "../../store/theme";
 
 interface IProps extends BaseHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const StyledFormScreenContainer = styled("div", {
+const StyledScreenContainer = styled("div", {
   "&.light-theme": {
     background: lightTheme.colors.$bgColor.value,
   },
@@ -16,12 +16,12 @@ const StyledFormScreenContainer = styled("div", {
   },
 });
 
-export function FormScreenContainer({ children, ...rest }: IProps) {
+export default function({ children, ...rest }: IProps) {
   const { theme } = useStore(themeStore);
 
   return (
-    <StyledFormScreenContainer {...rest} className={theme}>
+    <StyledScreenContainer {...rest} className={theme}>
       {children}
-    </StyledFormScreenContainer>
+    </StyledScreenContainer>
   );
 }

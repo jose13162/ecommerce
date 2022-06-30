@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import { useStore } from "zustand";
-import { darkTheme, lightTheme, styled, theme } from "../stitches.config";
-import { themeStore } from "../store/theme";
+import { darkTheme, lightTheme, styled, theme } from "../../stitches.config";
+import { themeStore } from "../../store/theme";
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {}
 

@@ -4,12 +4,12 @@ import { toast, ToastContainer } from "react-toastify";
 import { useStore } from "zustand";
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
-import { FormUtils } from "../../Components/FormUtils";
+import * as FormUtils from "../../Components/FormUtils";
 import { Input } from "../../Components/Input";
 import { IKey } from "../../Models/Key";
 import { themeStore } from "../../store/theme";
 import { $axios } from "../../utils/axios";
-import { useForm } from "../../utils/useForm";
+import { useForm } from "../../hooks/useForm";
 
 interface IForm {
   name: string;
@@ -116,9 +116,9 @@ export function CreateAccount() {
         pauseOnHover
       />
       <Container fullHeight>
-        <FormUtils.Wrapper className={theme}>
+        <FormUtils.Container className={theme}>
           <h1>Crie uma conta</h1>
-          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+          <FormUtils.Base onSubmit={handleSubmit} autoComplete="off">
             <FormUtils.Grid>
               <FormUtils.FieldsGrid>
                 <Input type="text" value={registerKey?.email || ""} disabled />
@@ -167,8 +167,8 @@ export function CreateAccount() {
                 text={isLoading ? "Enviando..." : "Criar conta"}
               />
             </FormUtils.Grid>
-          </FormUtils.Form>
-        </FormUtils.Wrapper>
+          </FormUtils.Base>
+        </FormUtils.Container>
       </Container>
     </FormUtils.ScreenContainer>
   );

@@ -1,10 +1,10 @@
-import { styled } from "../stitches.config";
+import { styled } from "../../stitches.config";
 
 interface IProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const FormGridLayout = styled("div", {
+const GridLayout = styled("div", {
   width: "100%",
   display: "grid",
   gridTemplateColumns: "1fr",
@@ -13,6 +13,6 @@ const FormGridLayout = styled("div", {
   justifyItems: "center",
 });
 
-export function FormGrid(props: IProps) {
-  return <FormGridLayout>{props.children}</FormGridLayout>;
+export default function(props: IProps) {
+  return <GridLayout>{props.children}</GridLayout>;
 }

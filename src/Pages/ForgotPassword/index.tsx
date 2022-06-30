@@ -3,11 +3,11 @@ import { toast, ToastContainer } from "react-toastify";
 import { useStore } from "zustand";
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
-import { FormUtils } from "../../Components/FormUtils";
+import * as FormUtils from "../../Components/FormUtils";
 import { Input } from "../../Components/Input";
 import { themeStore } from "../../store/theme";
 import { $axios } from "../../utils/axios";
-import { useForm } from "../../utils/useForm";
+import { useForm } from "../../hooks/useForm";
 
 interface IForm {
   email: string;
@@ -67,19 +67,22 @@ export function ForgotPassword() {
         pauseOnHover
       />
       <Container fullHeight>
-        <FormUtils.Wrapper>
+        <FormUtils.Container>
           <h1>Recuperar senha</h1>
-          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+          <FormUtils.Base onSubmit={handleSubmit} autoComplete="off">
             <FormUtils.Grid>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChange}
-                value={form.email}
-                disabled={isLoading || isDone}
-                required
-              />
+              <FormUtils.FieldsGrid>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  value={form.email}
+                  disabled={isLoading || isDone}
+                  required
+                />
+                <FormUtils.Link href="/login" text="Entre na sua conta" />
+              </FormUtils.FieldsGrid>
 
               <Button
                 type="submit"
@@ -88,8 +91,8 @@ export function ForgotPassword() {
                 style={{ width: "100%" }}
               />
             </FormUtils.Grid>
-          </FormUtils.Form>
-        </FormUtils.Wrapper>
+          </FormUtils.Base>
+        </FormUtils.Container>
       </Container>
     </FormUtils.ScreenContainer>
   );

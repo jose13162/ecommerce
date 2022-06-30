@@ -1,7 +1,7 @@
 import React, { BaseHTMLAttributes } from "react";
 import { useStore } from "zustand";
-import { darkTheme, lightTheme, styled, theme } from "../stitches.config";
-import { themeStore } from "../store/theme";
+import { darkTheme, lightTheme, styled, theme } from "../../stitches.config";
+import { themeStore } from "../../store/theme";
 
 interface IProps extends BaseHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode | React.ReactNode[];
@@ -37,7 +37,7 @@ const StyledWrapper = styled("div", {
   },
 });
 
-export function FormWrapper(props: IProps) {
+export default function(props: IProps) {
   const { theme } = useStore(themeStore);
 
   return <StyledWrapper className={theme}>{props.children}</StyledWrapper>;

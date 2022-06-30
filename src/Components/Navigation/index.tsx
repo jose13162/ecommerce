@@ -1,13 +1,13 @@
 import { useStore } from "zustand";
-import { darkTheme, lightTheme, styled, theme } from "../stitches.config";
-import { themeStore } from "../store/theme";
-import { Container } from "./Container";
+import { darkTheme, lightTheme, styled, theme } from "../../stitches.config";
+import { themeStore } from "../../store/theme";
+import { Container } from "../Container";
 import {
   faUser,
   faCartShopping,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavigationItem } from "./NavigationItem";
+import { NavigationItem } from "./Item";
 
 const StyledNavigation = styled("nav", {
   "&.light-theme": {

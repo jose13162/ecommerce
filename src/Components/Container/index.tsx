@@ -1,9 +1,9 @@
 import React from "react";
-import { styled } from "../stitches.config";
+import { styled } from "../../stitches.config";
 
 const StyledContainer = styled("div", {
   width: "70%",
-  margin: "auto",
+  margin: "0 auto",
   overflow: "hidden",
   display: "grid",
   "@tiny": {

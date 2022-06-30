@@ -2,11 +2,11 @@ import { FormEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
-import { FormUtils } from "../../Components/FormUtils";
+import * as FormUtils from "../../Components/FormUtils";
 import { Input } from "../../Components/Input";
 import { $axios } from "../../utils/axios";
 import { IKey } from "../../Models/Key";
-import { useForm } from "../../utils/useForm";
+import { useForm } from "../../hooks/useForm";
 import { toast, ToastContainer } from "react-toastify";
 import { useStore } from "zustand";
 import { themeStore } from "../../store/theme";
@@ -111,9 +111,9 @@ export function ChangePassword() {
         pauseOnHover
       />
       <Container fullHeight>
-        <FormUtils.Wrapper>
+        <FormUtils.Container>
           <h1>Mudar senha</h1>
-          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+          <FormUtils.Base onSubmit={handleSubmit} autoComplete="off">
             <FormUtils.Grid>
               <FormUtils.FieldsGrid>
                 <Input value={forgotPasswordKey?.email || ""} disabled />
@@ -144,8 +144,8 @@ export function ChangePassword() {
                 style={{ width: "100%" }}
               />
             </FormUtils.Grid>
-          </FormUtils.Form>
-        </FormUtils.Wrapper>
+          </FormUtils.Base>
+        </FormUtils.Container>
       </Container>
     </FormUtils.ScreenContainer>
   );

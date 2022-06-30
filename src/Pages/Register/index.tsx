@@ -7,8 +7,8 @@ import { themeStore } from "../../store/theme";
 import { $axios } from "../../utils/axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FormUtils } from "../../Components/FormUtils";
-import { useForm } from "../../utils/useForm";
+import * as FormUtils from "../../Components/FormUtils";
+import { useForm } from "../../hooks/useForm";
 
 interface IForm {
   email: string;
@@ -68,19 +68,22 @@ export function Register() {
         pauseOnHover
       />
       <Container fullHeight>
-        <FormUtils.Wrapper className={theme}>
+        <FormUtils.Container className={theme}>
           <h1>Crie uma conta</h1>
-          <FormUtils.Form onSubmit={handleSubmit} autoComplete="off">
+          <FormUtils.Base onSubmit={handleSubmit} autoComplete="off">
             <FormUtils.Grid>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChange}
-                disabled={isLoading || isDone}
-                value={form.email}
-                required
-              />
+              <FormUtils.FieldsGrid>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  disabled={isLoading || isDone}
+                  value={form.email}
+                  required
+                />
+                <FormUtils.Link href="/login" text="Entre na sua conta" />
+              </FormUtils.FieldsGrid>
 
               <Button
                 type="submit"
@@ -89,8 +92,8 @@ export function Register() {
                 text={isDone ? "Enviado" : isLoading ? "Enviando..." : "Enviar"}
               />
             </FormUtils.Grid>
-          </FormUtils.Form>
-        </FormUtils.Wrapper>
+          </FormUtils.Base>
+        </FormUtils.Container>
       </Container>
     </FormUtils.ScreenContainer>
   );

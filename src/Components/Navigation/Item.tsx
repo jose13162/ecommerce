@@ -2,8 +2,8 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LinkHTMLAttributes } from "react";
 import { useStore } from "zustand";
-import { darkTheme, lightTheme, theme, styled } from "../stitches.config";
-import { themeStore } from "../store/theme";
+import { darkTheme, lightTheme, theme, styled } from "../../stitches.config";
+import { themeStore } from "../../store/theme";
 
 const NavItem = styled("a", {
   height: "2.5rem",

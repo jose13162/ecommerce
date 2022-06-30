@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
 import { BaseHTMLAttributes } from "react";
 
-const FormFieldsGridLayout = styled("div", {
+const FieldsGridLayout = styled("div", {
   display: "grid",
   width: "100%",
   gridTemplateColumns: "1fr",
@@ -13,6 +13,6 @@ interface IProps extends BaseHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode | React.ReactNode[];
 }
 
-export function FormFieldsGrid({ children, ...rest }: IProps) {
-  return <FormFieldsGridLayout {...rest}>{children}</FormFieldsGridLayout>;
+export default function({ children, ...rest }: IProps) {
+  return <FieldsGridLayout {...rest}>{children}</FieldsGridLayout>;
 }
