@@ -8,48 +8,27 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavigationItem } from "./Item";
+import { Logo } from "../Logo";
+import { HamburgerButton } from "./HamburgerButton";
 
 const StyledNavigation = styled("nav", {
   "&.light-theme": {
     boxShadow: theme.shadows.$base.value,
     color: lightTheme.colors.$textColor.value,
     background: lightTheme.colors.$bgColorDarker.value,
-    ".title": {
-      color: lightTheme.colors.$textColor.value,
-    },
   },
   "&.dark-theme": {
     boxShadow: theme.shadows.$bold.value,
     color: darkTheme.colors.$textColor.value,
     background: darkTheme.colors.$bgColor.value,
-    ".title": {
-      color: darkTheme.colors.$textColor.value,
-    },
   },
   ".hamburger-button": { display: "none" },
-  ".title": { textDecoration: "none" },
-  "@large": {
-    ".nav-item-wrapper": {
-      gridTemplateColumns: "2.5rem",
-      svg: {
-        width: "80%",
-        height: "80%",
-      },
-      ".label": {
-        display: "none",
-      },
-    },
-  },
-  "@small": {
-    ".nav-item-wrapper": {
+  "@tiny": {
+    ".nav-items": {
       display: "none",
     },
     ".hamburger-button": {
       display: "inherit",
-      svg: {
-        width: "80%",
-        height: "80%",
-      },
     },
   },
 });
@@ -81,30 +60,22 @@ export function Navigation() {
     <StyledNavigation className={theme}>
       <Container>
         <Wrapper>
-          <a href="/" className="title">
-            <h1>Ecommerce</h1>
-          </a>
-          <NavItems>
-            <li className="nav-item-wrapper">
-              <NavigationItem
-                className={theme}
-                href="/account"
-                icon={faUser}
-                label="Meu perfil"
-              />
-            </li>
-            <li className="nav-item-wrapper">
-              <NavigationItem
-                className={theme}
-                href="/cart"
-                icon={faCartShopping}
-                label="Carrinho"
-              />
-            </li>
-            <li className="hamburger-button">
-              <NavigationItem className={theme} icon={faBars} />
-            </li>
+          <Logo />
+          <NavItems className="nav-items">
+            <NavigationItem
+              to="/account"
+              className="nav-item"
+              icon={faUser}
+              label="Meu perfil"
+            />
+            <NavigationItem
+              to="/cart"
+              className="nav-item"
+              icon={faCartShopping}
+              label="Carrinho"
+            />
           </NavItems>
+          <HamburgerButton className="hamburger-button" />
         </Wrapper>
       </Container>
     </StyledNavigation>

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { styled, theme } from "../../stitches.config";
+import { styled, theme } from "../stitches.config";
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;

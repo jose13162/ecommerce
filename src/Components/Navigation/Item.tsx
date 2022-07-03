@@ -1,11 +1,11 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LinkHTMLAttributes } from "react";
+import { NavLink, NavLinkProps } from "react-router-dom";
 import { useStore } from "zustand";
 import { darkTheme, lightTheme, theme, styled } from "../../stitches.config";
 import { themeStore } from "../../store/theme";
 
-const NavItem = styled("a", {
+const NavItem = styled(NavLink, {
   height: "2.5rem",
   borderRadius: "50%",
   color: theme.colors.$primary.value,
@@ -34,20 +34,29 @@ const NavItem = styled("a", {
       color: lightTheme.colors.$textColor.value,
     },
   },
+  "@small": {
+    ".label": {
+      display: "none",
+    },
+    svg: {
+      width: "75%",
+      height: "75%",
+    },
+  },
 });
 
-interface IProps extends LinkHTMLAttributes<HTMLAnchorElement> {
+interface IProps extends NavLinkProps {
   icon: IconDefinition;
-  label?: string;
+  label: string;
 }
 
-export function NavigationItem(props: IProps) {
+export function NavigationItem({ icon, label, ...rest }: IProps) {
   const { theme } = useStore(themeStore);
 
   return (
-    <NavItem {...props} className={theme}>
-      <FontAwesomeIcon icon={props.icon} />
-      {props.label && <p className="label">{props.label}</p>}
+    <NavItem {...rest} className={theme}>
+      <FontAwesomeIcon icon={icon} />
+      <p className="label">{label}</p>
     </NavItem>
   );
 }

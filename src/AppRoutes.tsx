@@ -6,21 +6,9 @@ import { Home } from "./Pages/Home";
 import { Login } from "./Pages/Login";
 import { Register } from "./Pages/Register";
 import { CreateAccount } from "./Pages/Register/CreateAccount";
-import { globalCss } from "./stitches.config";
-
-const globalStyles = globalCss({
-  "*": {
-    fontFamily: "Poppins",
-  },
-  ul: {
-    margin: 0,
-    padding: 0,
-  },
-});
+import "./App.css";
 
 function AppRoutes() {
-  globalStyles();
-
   return (
     <Router>
       <Routes>
