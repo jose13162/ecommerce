@@ -1,5 +1,4 @@
 import { useStore } from "zustand";
-import { IProduct } from "../../Models/Product";
 import { darkTheme, lightTheme, styled, theme } from "../../stitches.config";
 import { themeStore } from "../../store/theme";
 import { Cover } from "./Cover";
@@ -7,11 +6,7 @@ import { Details } from "./Details";
 import { Price } from "./Price";
 import { Title } from "./Title";
 
-interface IProps {
-  product: IProduct;
-}
-
-const StyledProduct = styled("a", {
+const StyledProduct = styled("div", {
   width: "100%",
   height: "12rem",
   textDecoration: "none",
@@ -35,7 +30,7 @@ const StyledProduct = styled("a", {
   },
 });
 
-export function Product({ product }: IProps) {
+export function Product() {
   const { theme } = useStore(themeStore);
 
   const formatPrice = (price: number = 0) => {
@@ -49,11 +44,11 @@ export function Product({ product }: IProps) {
   };
 
   return (
-    <StyledProduct className={theme} href={`/products/${product?.id}`}>
-      <Cover src={product?.media[0].url} />
+    <StyledProduct className={theme}>
+      <Cover src="" alt="product image" />
       <Details>
-        <Title>{product?.title}</Title>
-        <Price>{formatPrice(product?.price)}</Price>
+        <Title>product title</Title>
+        <Price>{formatPrice(0)}</Price>
       </Details>
     </StyledProduct>
   );

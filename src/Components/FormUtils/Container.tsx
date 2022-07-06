@@ -7,7 +7,7 @@ interface IProps extends BaseHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const StyledWrapper = styled("div", {
+const StyledContainer = styled("div", {
   width: "70%",
   minWidth: "16rem",
   maxWidth: "28rem",
@@ -32,13 +32,10 @@ const StyledWrapper = styled("div", {
       color: darkTheme.colors.$titleColor.value,
     },
   },
-  h1: {
-    margin: 0,
-  },
 });
 
 export default function(props: IProps) {
   const { theme } = useStore(themeStore);
 
-  return <StyledWrapper className={theme}>{props.children}</StyledWrapper>;
+  return <StyledContainer className={theme}>{props.children}</StyledContainer>;
 }

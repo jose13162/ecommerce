@@ -4,7 +4,7 @@ interface IProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const GridLayout = styled("div", {
+const StyledGrid = styled("div", {
   width: "100%",
   display: "grid",
   gridTemplateColumns: "1fr",
@@ -14,5 +14,5 @@ const GridLayout = styled("div", {
 });
 
 export default function(props: IProps) {
-  return <GridLayout>{props.children}</GridLayout>;
+  return <StyledGrid>{props.children}</StyledGrid>;
 }

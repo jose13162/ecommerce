@@ -1,9 +1,8 @@
-import { BaseHTMLAttributes } from "react";
 import { useStore } from "zustand";
 import { darkTheme, lightTheme, styled } from "../../stitches.config";
 import { themeStore } from "../../store/theme";
 
-interface IProps extends BaseHTMLAttributes<HTMLDivElement> {
+interface IProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
@@ -16,12 +15,10 @@ const StyledScreenContainer = styled("div", {
   },
 });
 
-export default function({ children, ...rest }: IProps) {
+export default function ({ children }: IProps) {
   const { theme } = useStore(themeStore);
 
   return (
-    <StyledScreenContainer {...rest} className={theme}>
-      {children}
-    </StyledScreenContainer>
+    <StyledScreenContainer className={theme}>{children}</StyledScreenContainer>
   );
 }

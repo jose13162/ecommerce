@@ -5,7 +5,6 @@ import { Container } from "../Container";
 import {
   faUser,
   faCartShopping,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavigationItem } from "./Item";
 import { Logo } from "../Logo";
@@ -46,7 +45,6 @@ const Wrapper = styled("div", {
 });
 
 const NavItems = styled("ul", {
-  listStyle: "none",
   display: "grid",
   gridAutoColumns: "max-content",
   gridAutoFlow: "column",

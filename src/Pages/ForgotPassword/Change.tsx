@@ -1,15 +1,8 @@
-import { FormEvent, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
-import * as FormUtils from "../../Components/FormUtils";
 import { Input } from "../../Components/Input";
-import { $axios } from "../../utils/axios";
-import { IKey } from "../../Models/Key";
 import { useForm } from "../../hooks/useForm";
-import { toast, ToastContainer } from "react-toastify";
-import { useStore } from "zustand";
-import { themeStore } from "../../store/theme";
+import * as FormUtils from "../../Components/FormUtils";
 
 interface IForm {
   password: string;
@@ -17,113 +10,26 @@ interface IForm {
 }
 
 export function ChangePassword() {
-  const { key } = useParams();
-  const { theme } = useStore(themeStore);
-  const navigate = useNavigate();
-  const [forgotPasswordKey, setForgotPasswordKey] = useState<IKey>();
   const [form, setForm, handleChange] = useForm<IForm>({
     password: "",
     passwordConfirmation: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    $axios
-      .get(`/forgot-password/${key}`)
-      .then(({ data }) => {
-        setForgotPasswordKey(data);
-      })
-      .catch(() => {
-        navigate("/forgot-password");
-      });
-  }, []);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    if (isLoading) return;
-
-    setIsLoading(true);
-
-    if (form.password !== form.passwordConfirmation) {
-      toast.error("Confirme sua senha novamente...", {
-        theme: theme === "dark-theme" ? "dark" : "light",
-      });
-      setForm({
-        ...form,
-        passwordConfirmation: "",
-      });
-
-      setIsLoading(false);
-
-      return;
-    }
-
-    try {
-      await $axios.put("/forgot-password", {
-        ...form,
-        key: forgotPasswordKey!.key,
-      });
-
-      navigate("/login");
-    } catch (error: any) {
-      switch (error.response.status) {
-        case 404:
-          navigate("/forgot-password");
-
-          break;
-        case 422:
-          toast.error("Confirme sua senha novamente...", {
-            theme: theme === "dark-theme" ? "dark" : "light",
-          });
-          setForm({
-            ...form,
-            passwordConfirmation: "",
-          });
-
-          break;
-        case 400:
-          toast.error("Sua nova senha deve ser diferente da anterior...", {
-            theme: theme === "dark-theme" ? "dark" : "light",
-          });
-          setForm({
-            password: "",
-            passwordConfirmation: "",
-          });
-
-          break;
-      }
-    }
-
-    setIsLoading(false);
-  }
 
   return (
     <FormUtils.ScreenContainer>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <Container fullHeight>
         <FormUtils.Container>
           <h1>Mudar senha</h1>
-          <FormUtils.Base onSubmit={handleSubmit} autoComplete="off">
+          <FormUtils.Base autoComplete="off">
             <FormUtils.Grid>
               <FormUtils.FieldsGrid>
-                <Input value={forgotPasswordKey?.email || ""} disabled />
+                <Input value="email@gmail.com" disabled />
                 <Input
                   placeholder="Nova senha"
                   name="password"
                   type="password"
                   onChange={handleChange}
                   value={form.password}
-                  disabled={isLoading}
                   required
                 />
                 <Input
@@ -132,17 +38,11 @@ export function ChangePassword() {
                   type="password"
                   onChange={handleChange}
                   value={form.passwordConfirmation}
-                  disabled={isLoading}
                   required
                 />
               </FormUtils.FieldsGrid>
 
-              <Button
-                type="submit"
-                text={isLoading ? "Enviando..." : "Enviar"}
-                disabled={isLoading}
-                style={{ width: "100%" }}
-              />
+              <Button type="submit" text="Enviar" style={{ width: "100%" }} />
             </FormUtils.Grid>
           </FormUtils.Base>
         </FormUtils.Container>

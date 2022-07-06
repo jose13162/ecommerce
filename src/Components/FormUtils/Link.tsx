@@ -1,11 +1,11 @@
-import { LinkHTMLAttributes } from "react";
+import { NavLink, NavLinkProps } from "react-router-dom";
 import { styled, theme } from "../../stitches.config";
 
-interface IProps extends LinkHTMLAttributes<HTMLAnchorElement> {
+interface IProps extends NavLinkProps {
   text: string;
 }
 
-const StyledLink = styled("a", {
+const StyledLink = styled(NavLink, {
   width: "max-content",
   color: theme.colors.$primary.value,
   textDecoration: "none",
