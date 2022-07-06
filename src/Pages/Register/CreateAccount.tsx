@@ -1,8 +1,8 @@
 import { Button } from "../../Components/Button";
 import { Container } from "../../Components/Container";
-import { Input } from "../../Components/Input";
 import { useForm } from "../../hooks/useForm";
 import * as FormUtils from "../../Components/FormUtils";
+import { Input } from "../../Components/Input";
 
 interface IForm {
   name: string;
@@ -62,11 +62,9 @@ export function CreateAccount() {
                 />
               </FormUtils.FieldsGrid>
 
-              <Button
-                type="submit"
-                style={{ width: "100%" }}
-                text="Criar conta"
-              />
+              <Button type="submit" style={{ width: "100%" }}>
+                Criar conta
+              </Button>
             </FormUtils.Grid>
           </FormUtils.Base>
         </FormUtils.Container>

@@ -1,21 +1,5 @@
 import React from "react";
-import { styled } from "../stitches.config";
-
-const StyledContainer = styled("div", {
-  width: "70%",
-  margin: "0 auto",
-  overflow: "hidden",
-  display: "grid",
-  "@tiny": {
-    width: "100vw",
-  },
-  "@small": {
-    width: "100vw",
-  },
-  "&.full-height": {
-    height: "100vh",
-  },
-});
+import { StyledContainer } from "./styles";
 
 interface IProps {
   children: React.ReactNode | React.ReactNode[];

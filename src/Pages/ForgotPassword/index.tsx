@@ -27,10 +27,12 @@ export function ForgotPassword() {
                   value={form.email}
                   required
                 />
-                <FormUtils.Link to="/login" text="Entre na sua conta" />
+                <FormUtils.Link to="/login">Entrar</FormUtils.Link>
               </FormUtils.FieldsGrid>
 
-              <Button type="submit" text="Enviar" style={{ width: "100%" }} />
+              <Button type="submit" style={{ width: "100%" }}>
+                Enviar
+              </Button>
             </FormUtils.Grid>
           </FormUtils.Base>
         </FormUtils.Container>

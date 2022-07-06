@@ -1,9 +1,8 @@
 import { Button } from "../Components/Button";
 import { Container } from "../Components/Container";
 import { Input } from "../Components/Input";
-import "react-toastify/dist/ReactToastify.css";
-import * as FormUtils from "../Components/FormUtils";
 import { useForm } from "../hooks/useForm";
+import * as FormUtils from "../Components/FormUtils";
 
 interface IForm {
   email: string;
@@ -47,15 +46,18 @@ export function Login() {
                     justifyContent: "space-between",
                   }}
                 >
-                  <FormUtils.Link
-                    to="/forgot-password"
-                    text="Esqueceu a senha?"
-                  />
-                  <FormUtils.Link to="/register" text="Não tem uma conta?" />
+                  <FormUtils.Link to="/forgot-password">
+                    Esqueceu a senha?
+                  </FormUtils.Link>
+                  <FormUtils.Link to="/register">
+                    Não tem uma conta?
+                  </FormUtils.Link>
                 </div>
               </FormUtils.FieldsGrid>
 
-              <Button type="submit" style={{ width: "100%" }} text="Entrar" />
+              <Button type="submit" style={{ width: "100%" }}>
+                Entrar
+              </Button>
             </FormUtils.Grid>
           </FormUtils.Base>
         </FormUtils.Container>

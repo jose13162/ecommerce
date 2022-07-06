@@ -1,11 +1,6 @@
-import { ButtonHTMLAttributes } from "react";
 import { styled, theme } from "../stitches.config";
 
-interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  text: string;
-}
-
-const StyledButton = styled("button", {
+export const Button = styled("button", {
   padding: "0.75rem 2.5rem",
   border: "none",
   borderRadius: "0.25rem",
@@ -19,7 +14,3 @@ const StyledButton = styled("button", {
     background: theme.colors.$primaryLighter.value,
   },
 });
-
-export function Button({ text, ...rest }: IProps) {
-  return <StyledButton {...rest}>{text}</StyledButton>;
-}
