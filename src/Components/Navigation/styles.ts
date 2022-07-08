@@ -4,7 +4,8 @@ export const StyledNavigation = styled("nav", {
   boxShadow: theme.shadows.$base.value,
   color: theme.colors.$textColor.value,
   background: theme.colors.$bgColorDarker.value,
-  ".hamburger-button": { display: "none" },
+  zIndex: 1,
+  "#hamburger-button": { display: "none" },
   "@tiny": {
     "#nav-items": {
       display: "none",

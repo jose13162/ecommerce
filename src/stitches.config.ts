@@ -15,6 +15,8 @@ export const { styled, theme } = createStitches({
       $titleColor: "#444",
     },
     transitions: {
+      $slowerTransition: "all 0.25s linear",
+      $slowTransition: "all 0.20s linear",
       $baseTransition: "all 0.15s linear",
       $fastTransition: "all 0.10s linear",
     },

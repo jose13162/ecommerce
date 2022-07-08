@@ -4,8 +4,17 @@ import { NavigationItem } from "./Item";
 import { Logo } from "../Logo";
 import { NavigationItems, StyledNavigation, Wrapper } from "./styles";
 import HamburgerButton from "./HamburgerButton";
+import { Portal } from "./HamburgerMenu/Portal";
+import { HamburgerMenu } from "./HamburgerMenu";
+import { createRef } from "react";
 
 export function Navigation() {
+  const hamburgerMenuReference = createRef<HTMLBaseElement>();
+
+  function toggleHamburgerMenu() {
+    hamburgerMenuReference.current?.classList.toggle("active");
+  }
+
   return (
     <StyledNavigation>
       <Container>
@@ -25,8 +34,14 @@ export function Navigation() {
               label="Carrinho"
             />
           </NavigationItems>
-          <HamburgerButton id="hamburger-button" />
+          <HamburgerButton
+            id="hamburger-button"
+            onClick={toggleHamburgerMenu}
+          />
         </Wrapper>
+        <Portal>
+          <HamburgerMenu ref={hamburgerMenuReference} />
+        </Portal>
       </Container>
     </StyledNavigation>
   );
