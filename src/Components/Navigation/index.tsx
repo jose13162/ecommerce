@@ -4,7 +4,7 @@ import { NavigationItem } from "./Item";
 import { Logo } from "../Logo";
 import { NavigationItems, StyledNavigation, Wrapper } from "./styles";
 import HamburgerButton from "./HamburgerButton";
-import { Portal } from "./HamburgerMenu/Portal";
+import { Portal } from "../Portal";
 import { HamburgerMenu } from "./HamburgerMenu";
 import { createRef } from "react";
 
@@ -39,7 +39,7 @@ export function Navigation() {
             onClick={toggleHamburgerMenu}
           />
         </Wrapper>
-        <Portal>
+        <Portal tag="div" selector="#hamburger-menu-modal">
           <HamburgerMenu ref={hamburgerMenuReference} />
         </Portal>
       </Container>

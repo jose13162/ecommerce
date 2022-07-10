@@ -21,9 +21,11 @@ export const { styled, theme } = createStitches({
       $fastTransition: "all 0.10s linear",
     },
     shadows: {
-      $base: "0 1px 5px rgba(0, 0, 0, 0.1)",
+      $thin: "0 1px 5px rgba(0, 0, 0, 0.1)",
+      $base: "0 1px 5px rgba(0, 0, 0, 0.2)",
       $bold: "0 1px 5px rgba(0, 0, 0, 0.3)",
-      $bolder: "0 1px 5px rgba(0, 0, 0, 0.5)",
+      $bolder: "0 1px 5px rgba(0, 0, 0, 0.4)",
+      $boldest: "0 1px 5px rgba(0, 0, 0, 0.5)",
     },
   },
   media: {
