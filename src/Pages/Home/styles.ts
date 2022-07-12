@@ -1,3 +1,4 @@
+import { Container } from "../../Components/Container";
 import { styled, theme } from "../../stitches.config";
 
 export const StyledHome = styled("div", {
@@ -19,13 +20,21 @@ export const HamburgerMenuModal = styled("div", {
   gridTemplateRows: "1fr",
 });
 
+export const CustomContainer = styled(Container, {
+  overflowY: "overlay",
+});
+
 export const Wrapper = styled("div", {
   width: "100%",
   height: "100%",
-  overflowY: "scroll",
+  padding: "1.5rem",
   display: "grid",
-  gridTemplateColumns: "15rem 1fr",
-  "&::-webkit-scrollbar": {
-    width: "0px",
+  gridTemplateColumns: "16rem 1fr",
+  gap: "1.5rem",
+  "@small": {
+    gridTemplateColumns: "1fr",
+    "#sidebar": {
+      display: "none",
+    },
   },
 });

@@ -15,7 +15,7 @@ export function Register() {
 
   return (
     <FormUtils.ScreenContainer>
-      <Container fullHeight>
+      <Container>
         <FormUtils.Container>
           <h1>Crie uma conta</h1>
           <FormUtils.Base autoComplete="off">

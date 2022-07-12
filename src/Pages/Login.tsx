@@ -17,7 +17,7 @@ export function Login() {
 
   return (
     <FormUtils.ScreenContainer>
-      <Container fullHeight>
+      <Container>
         <FormUtils.Container>
           <h1>Entre na sua conta</h1>
           <FormUtils.Base autoComplete="off">

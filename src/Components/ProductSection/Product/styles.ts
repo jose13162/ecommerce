@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { styled, theme } from "../../../stitches.config";
 
 export const Cover = styled("img", {
@@ -12,9 +13,10 @@ export const Price = styled("p", {
   color: theme.colors.$primary.value,
 });
 
-export const Title = styled("h3", {
+export const Title = styled(NavLink, {
   width: "100%",
   fontWeight: 600,
+  textDecoration: "none",
   textTransform: "uppercase",
   fontSize: "1rem",
   color: theme.colors.$textColorDarker.value,

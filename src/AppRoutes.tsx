@@ -6,12 +6,14 @@ import { Login } from "./Pages/Login";
 import { Register } from "./Pages/Register";
 import { CreateAccount } from "./Pages/Register/CreateAccount";
 import "./App.css";
+import { Account } from "./Pages/Account";
 
 function AppRoutes() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register/:key" element={<CreateAccount />} />

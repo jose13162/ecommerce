@@ -1,3 +1,4 @@
+import { NavLink, NavLinkProps } from "react-router-dom";
 import Rating from "./Rating";
 import {
   Cover,
@@ -27,8 +28,8 @@ export function Product() {
       />
       <Details>
         <Category>hardware</Category>
-        <Title title="ASUS GEFORCE GTX 1050 TI OVERCLOCKED">
-          asus geforce gtx 1050 ti overclocked
+        <Title title="ASUS GEFORCE GTX 1050 TI OVERCLOCKED" to={`/products/1`}>
+          ASUS GEFORCE GTX 1050 TI OVERCLOCKED
         </Title>
         <Price>{formatPrice(1299.9)}</Price>
         <Rating stars={4} />

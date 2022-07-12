@@ -13,7 +13,7 @@ export function ForgotPassword() {
 
   return (
     <FormUtils.ScreenContainer>
-      <Container fullHeight>
+      <Container>
         <FormUtils.Container>
           <h1>Recuperar senha</h1>
           <FormUtils.Base autoComplete="off">

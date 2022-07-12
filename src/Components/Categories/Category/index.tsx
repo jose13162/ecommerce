@@ -1,10 +1,14 @@
 import { NavLinkProps } from "react-router-dom";
-import { StyledCategory } from "./styles";
+import { CustomSidebarItem, StyledNavLink } from "./styles";
 
 interface IProps extends NavLinkProps {
   category: string;
 }
 
 export function Category({ category, ...rest }: IProps) {
-  return <StyledCategory {...rest}>{category}</StyledCategory>;
+  return (
+    <CustomSidebarItem>
+      <StyledNavLink {...rest}>{category}</StyledNavLink>
+    </CustomSidebarItem>
+  );
 }

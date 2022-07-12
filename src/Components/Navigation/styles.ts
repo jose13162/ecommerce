@@ -17,7 +17,8 @@ export const StyledNavigation = styled("nav", {
 });
 
 export const Wrapper = styled("div", {
-  padding: "1.5rem 1.5rem",
+  width: "100%",
+  padding: "1.5rem",
   display: "grid",
   gridTemplateColumns: "max-content max-content",
   justifyContent: "space-between",

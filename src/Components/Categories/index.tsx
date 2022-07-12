@@ -1,70 +1,37 @@
+import { BaseHTMLAttributes } from "react";
 import { Category } from "./Category";
 import { CategoriesList, StyledCategories } from "./styles";
 
-export function Categories() {
+export function Categories(props: BaseHTMLAttributes<HTMLElement>) {
   return (
-    <StyledCategories>
+    <StyledCategories {...props}>
       <CategoriesList>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
-        <li>
-          <Category to="/" category="hardware" />
-        </li>
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
+        <Category to="/" category="hardware" />
       </CategoriesList>
     </StyledCategories>
   );

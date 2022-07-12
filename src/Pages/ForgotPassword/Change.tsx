@@ -17,7 +17,7 @@ export function ChangePassword() {
 
   return (
     <FormUtils.ScreenContainer>
-      <Container fullHeight>
+      <Container>
         <FormUtils.Container>
           <h1>Mudar senha</h1>
           <FormUtils.Base autoComplete="off">
