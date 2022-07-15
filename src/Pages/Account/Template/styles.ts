@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
-import { theme } from "../../stitches.config";
+import { theme } from "../../../stitches.config";
 
-export const StyledAccount = styled("div", {
+export const StyledTemplate = styled("div", {
   width: "100vw",
   height: "100vh",
   display: "grid",
