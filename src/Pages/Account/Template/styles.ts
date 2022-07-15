@@ -21,6 +21,6 @@ export const Wrapper = styled("div", {
 export const Card = styled("div", {
   width: "100%",
   height: "100%",
+  borderRadius: "0.5rem",
   boxShadow: theme.shadows.$bold.value,
 });
-

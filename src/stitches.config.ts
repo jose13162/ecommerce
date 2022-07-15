@@ -10,6 +10,7 @@ export const { styled, theme } = createStitches({
       $bgColorDarkest: "#ddd",
       $bgColorSecondary: "#e9f5ff",
       $bgColorSecondaryDarker: "#e7f3fd",
+      $textColorLight: "#eee",
       $textColor: "#555",
       $textColorDarker: "#333",
       $titleColor: "#444",
