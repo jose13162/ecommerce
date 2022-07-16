@@ -9,7 +9,6 @@ export const Input = styled("input", {
   overflow: "hidden",
   transition: theme.transitions.$fastTransition.value,
   border: `2px solid ${theme.colors.$bgColor.value}`,
-  background: theme.colors.$bgColor.value,
   caretColor: theme.colors.$textColor.value,
   color: theme.colors.$textColor.value,
   "&[disabled]": {
@@ -18,5 +17,23 @@ export const Input = styled("input", {
   },
   "&:focus": {
     border: `2px solid ${theme.colors.$primary.value}`,
+  },
+  variants: {
+    lighter: {
+      true: {
+        background: theme.colors.$bgColor.value,
+      },
+      false: {
+        background: theme.colors.$bgColorDarker.value,
+      },
+    },
+    darker: {
+      true: {
+        background: theme.colors.$bgColorDarker.value,
+      },
+      false: {
+        background: theme.colors.$bgColor.value,
+      },
+    },
   },
 });

@@ -4,17 +4,22 @@ import { styled, theme } from "../../../../stitches.config";
 export const StyledUserInformation = styled("div", {
   display: "grid",
   gridTemplateColumns: "8rem 1fr",
-  gap: "1rem",
+  gridTemplateRows: "max-content max-content",
+  gridTemplateAreas: `"user-avatar user-data" "buttons user-data"`,
+  gap: "1rem 2rem",
 });
 
 export const Wrapper = styled("div", {
+  maxWidth: "36rem",
+  gridArea: "user-data",
   display: "grid",
   gridTemplateColumns: "1fr",
   gridAutoRows: "max-content",
-  gap: "0.25rem",
+  gap: "0.75rem",
 });
 
 export const Avatar = styled("img", {
+  gridArea: "user-avatar",
   width: "100%",
   aspectRatio: "1 / 1",
   objectFit: "cover",
@@ -24,9 +29,10 @@ export const Avatar = styled("img", {
 });
 
 export const Buttons = styled("div", {
+  gridArea: "buttons",
   width: "max-content",
   display: "grid",
-  gridTemplateColumns: "max-content max-content",
+  gridTemplateRows: "max-content max-content",
   gap: "1rem",
 });
 
@@ -36,6 +42,7 @@ export const StyledNavLink = styled(NavLink, {
   padding: "0.25rem 1rem",
   borderRadius: "0.25rem",
   textDecoration: "none",
+  textAlign: "center",
   transition: theme.transitions.$baseTransition.value,
   "&:hover": {
     background: theme.colors.$primaryLighter.value,

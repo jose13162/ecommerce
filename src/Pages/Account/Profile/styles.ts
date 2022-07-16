@@ -1,7 +1,7 @@
 import { styled, theme } from "../../../stitches.config";
 
 export const StyledProfile = styled("div", {
-  padding: "0.5rem",
+  padding: "1rem",
   display: "grid",
   gridTemplateColumns: "1fr",
   gridAutoRows: "max-content",
